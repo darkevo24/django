@@ -26,7 +26,7 @@
                 display : flex;
                 justify-content: center;
             }
-            #xero {
+            #cin7 {
                 width : 80px;
                 position: absolute;
                 left: 0;
@@ -37,12 +37,12 @@
     <body>
         <div class="p-10">
             {% load static %}
-            <a href="/"><img class=" cursor-pointer" id="xero" src="{% static 'images/xero.png' %}"></a>
+            <a href="/"><img class=" cursor-pointer" id="cin7" src="{% static 'images/cin7.png' %}"></a>
             <div class="app">
                 <div class="flex items-center w-full mt-2">
                 <label id="label" class="mdc-text-field mdc-text-field--filled w-80">
                     <span class="mdc-text-field__ripple"></span>
-                    <span class="mdc-floating-label" id="my-label-id">Organizations to connect</span>
+                    <span class="mdc-floating-label" id="my-label-id">Accounts to connect</span>
                     <input name="organization" class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
                     <span class="mdc-line-ripple"></span>
                   </label> 
@@ -57,37 +57,37 @@
                 </div>
             </div>
 
-            <button class="mdc-button mdc-button--raised w-40 mt-5">
-                <span class="mdc-button__label">      
-                    <p class="">Kounteq's App</p>
-                </span>
-              </button>
-
-              <p class="text-3xl ml-4 my-5">OR</p>
-
-              <div class="border-2 border-gray px-2 py-1">
-                <p>Redirect Uri: https://www.tbas.co.uk/xero/redirect
+              <div class="border-2 border-gray px-2 py-1 mt-5">
+                <p>https://go.cin7.com/cloud/apiSetup
                 </p>
               </div>
 
               <div class="mt-2">
-                <p class="text-2xl">Client ID</p>
+                <p class="text-2xl">Username</p>
                 <label class="mdc-text-field mdc-text-field--filled w-80">
                     <span class="mdc-text-field__ripple"></span>
-                    <span class="mdc-floating-label" id="my-label-id">Client ID</span>
+                    <span class="mdc-floating-label" id="my-label-id">Username</span>
                     <input name="client_id" class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
                     <span class="mdc-line-ripple"></span>
                   </label> 
               </div>
 
-              <div class="mt-2">
-                <p class="text-2xl">Client Secret</p>
+              <div class="mt-2 app2">
+                <p class="text-2xl">API Key</p>
+                <div class="flex items-center ">
                 <label class="mdc-text-field mdc-text-field--filled w-80">
                     <span class="mdc-text-field__ripple"></span>
-                    <span class="mdc-floating-label" id="my-label-id">Client Secret</span>
+                    <span class="mdc-floating-label" id="my-label-id">API Key</span>
                     <input name="client_id" class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
                     <span class="mdc-line-ripple"></span>
                   </label> 
+                  <button onclick="add2()" class="mdc-button mdc-button--raised w-6 ml-2">
+                    <span class="mdc-button__label">      
+                        <p class="text-4xl font-bold">+</p>
+                    </span>
+                  </button>
+                </div>
+                <div id="dummy2"></div>
               </div>
 
               <form>
@@ -118,7 +118,7 @@
                 span1.setAttribute("class","mdc-text-field__ripple");
                 var span2 = document.createElement("span");
                 span2.setAttribute("class","mdc-floating-label");
-                var text = document.createTextNode("Organizations to connect");
+                var text = document.createTextNode("Accounts to connect");
                 span2.appendChild(text);
                 var input = document.createElement("input");
                 input.classList.add("mdc-text-field__input")
@@ -132,6 +132,32 @@
                 var div = document.createElement("div");
                 div.appendChild(label);
                 document.getElementsByClassName("app")[0].insertBefore(div,document.getElementById("dummy"))
+                const textFields = [].map.call(document.querySelectorAll('.mdc-text-field'), function(el) {
+                return new MDCTextField(el);
+                });
+            }
+
+            function add2(){
+                var label = document.createElement("label");
+                label.setAttribute("class","mdc-text-field mdc-text-field--filled w-80 mt-2")
+                var span1 = document.createElement("span");
+                span1.setAttribute("class","mdc-text-field__ripple");
+                var span2 = document.createElement("span");
+                span2.setAttribute("class","mdc-floating-label");
+                var text = document.createTextNode("API Key");
+                span2.appendChild(text);
+                var input = document.createElement("input");
+                input.classList.add("mdc-text-field__input")
+                input.setAttribute("name","organization");
+                var span3 = document.createElement("span");
+                span3.classList.add("mdc-line-ripple")
+                label.appendChild(span1);
+                label.appendChild(span2);
+                label.appendChild(input);
+                label.appendChild(span3);
+                var div = document.createElement("div");
+                div.appendChild(label);
+                document.getElementsByClassName("app2")[0].insertBefore(div,document.getElementById("dummy2"))
                 const textFields = [].map.call(document.querySelectorAll('.mdc-text-field'), function(el) {
                 return new MDCTextField(el);
                 });

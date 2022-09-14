@@ -26,3 +26,6 @@ def index(request):
 
 def xero(request):
     return render(request,"xero.html")
+
+def cin7(request):
+    return render(request,"cin7.html")
