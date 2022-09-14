@@ -37,16 +37,61 @@
     <body>
         <div class="p-10">
             {% load static %}
-            <img id="xero" src="{% static 'images/xero.png' %}">
-            <div class="w-96 ">
+            <a href="/"><img class=" cursor-pointer" id="xero" src="{% static 'images/xero.png' %}"></a>
+            <div class="">
                 <p class="text-2xl">Organization to connect</p>
-                <label class="mdc-text-field mdc-text-field--filled w-full">
+                <div class="flex items-center w-full mt-2">
+                <label class="mdc-text-field mdc-text-field--filled w-80">
                     <span class="mdc-text-field__ripple"></span>
                     <span class="mdc-floating-label" id="my-label-id">Organization to connect</span>
-                    <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
+                    <input name="organization" class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
                     <span class="mdc-line-ripple"></span>
-                  </label>
+                  </label> 
+                  <button class="mdc-button mdc-button--raised w-6 ml-2">
+                    <span class="mdc-button__label">      
+                        <p class="text-4xl font-bold">+</p>
+                    </span>
+                  </button>
+                </div>
             </div>
+
+            <button class="mdc-button mdc-button--raised w-40 mt-5">
+                <span class="mdc-button__label">      
+                    <p class="">Kounteq's App</p>
+                </span>
+              </button>
+
+              <p class="text-3xl ml-4 my-5">OR</p>
+
+              <div class="border-2 border-gray px-2 py-1">
+                <p>Redirect Uri: https://www.tbas.co.uk/xero/redirect
+                </p>
+              </div>
+
+              <div class="mt-2">
+                <p class="text-2xl">Client ID</p>
+                <label class="mdc-text-field mdc-text-field--filled w-80">
+                    <span class="mdc-text-field__ripple"></span>
+                    <span class="mdc-floating-label" id="my-label-id">Client ID</span>
+                    <input name="client_id" class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
+                    <span class="mdc-line-ripple"></span>
+                  </label> 
+              </div>
+
+              <div class="mt-2">
+                <p class="text-2xl">Client Secret</p>
+                <label class="mdc-text-field mdc-text-field--filled w-80">
+                    <span class="mdc-text-field__ripple"></span>
+                    <span class="mdc-floating-label" id="my-label-id">Client Secret</span>
+                    <input name="client_id" class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
+                    <span class="mdc-line-ripple"></span>
+                  </label> 
+              </div>
+
+              <form>
+
+              </form>
+
         </div>
 
         <script>

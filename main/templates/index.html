@@ -10,13 +10,13 @@
             @use "@material/button";
 
             .logout {
-            --mdc-theme-primary: yellow;
-            --mdc-theme-on-primary: #442C2E;
+            --mdc-theme-primary: black;
+            --mdc-theme-on-primary: white;
             }
 
             .cancel {
             --mdc-theme-primary: #FF0000;
-            --mdc-theme-on-primary: #442C2E;
+            --mdc-theme-on-primary: white;
 
             @include button.ink-color(#84565E);
             }
@@ -50,13 +50,15 @@
             </div>
         </form>
         <form action="/cancel/" method="POST">
+            {% csrf_token %}
             <div class=" flex justify-end">
                 <button class="mdc-button cancel mdc-button--raised ">
-                    <span class="mdc-button__label">Cancel Subscription</span>
+                    <span id="cancel" class="mdc-button__label">Cancel Subscription</span>
                   </button>
                 </div>
             </form>
-            <form action="/search/" method="POST">
+            <form action="/" method="POST">
+                {% csrf_token %}
             <div class=" flex justify-center items-center flex-col">
                 <div class="flex flex-col">
                 <button class="mdc-button mdc-button--raised w-40">
@@ -71,7 +73,6 @@
                 </div>
             </div>
         </form> 
-
             <div class="flex items-center justify-center mt-10">
                 {% load static %}
                 <img id="xero" src="{% static 'images/xero.png' %}">
@@ -144,7 +145,18 @@
                                 background: "linear-gradient(to right, #00b09b, #96c93d)",
                             },
                             }).showToast();
+                            return false;
                     }
+                    else if (xero){
+                        window.location.replace("http://127.0.0.1:8000/xero/")
+                    }
+                    else if (cin7){
+                        window.location.replace("http://127.0.0.1:8000/cin7/")
+                    }
+                }
+
+                if (xero || cin7){
+                    document.getElementById("cancel").innerText = "Cancel Selected";
                 }
         </script>
     </body>
