@@ -20,13 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-9#n)^1r@s58si-i6b%whoy!ch#tkx*m*l#=(b@0k68ey3jb_nc'
+#SECRET_KEY='django-insecure-9#n)^1r@s58si-i6b%whoy!ch#tkx*m*l#=(b@0k68ey3jb_nc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -136,3 +135,8 @@ DEFAULT_BREAKPOINTS = {
 }
 
 TAILWIND_APP_NAME = 'theme'
+
+try:
+    SECRET_KEY = os.environ.get("SECRET_KEY",'django-insecure-9#n)^1r@s58si-i6b%whoy!ch#tkx*m*l#=(b@0k68ey3jb_nc')
+except KeyError as e:
+    raise RuntimeError("Could not find a SECRET_KEY in environment") from e

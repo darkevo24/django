@@ -46,14 +46,11 @@
               </button>
             </div>
         </form>
-        <form action="/cancel/" method="POST">
-            {% csrf_token %}
             <div class=" flex justify-end">
                 <button class="mdc-button cancel mdc-button--raised ">
                     <span id="cancel" class="mdc-button__label">Cancel Subscription</span>
                   </button>
                 </div>
-            </form>
             <form action="/" method="POST">
                 {% csrf_token %}
             <div class=" flex justify-center items-center flex-col">
@@ -107,6 +104,9 @@
                     xero = true;
                     cin7 = false;
                     }
+                    if (xero || cin7){
+                    document.getElementById("cancel").innerHTML = "Cancel Selected";
+                }
 
                 })
 
@@ -124,6 +124,9 @@
                     document.getElementById("cin7").style.border = "1px solid gray";
                     cin7 = true;
                     xero = false;
+                    if (xero || cin7){
+                    document.getElementById("cancel").innerHTML = "Cancel Selected";
+                }
                     }
                 })
                 function next(){
@@ -150,10 +153,17 @@
                         window.location.replace("http://127.0.0.1:8000/cin7/")
                     }
                 }
-
-                if (xero || cin7){
-                    document.getElementById("cancel").innerText = "Cancel Selected";
-                }
+                document.getElementById("cancel").addEventListener("click",function(){
+                    if (document.getElementById("cancel").innerHTML =="Cancel Selected" ){
+                        document.getElementById("cancel").innerHTML = "Cancel Subscription"
+                        xero = false;
+                        cin7 = false;
+                        document.getElementById("cin7").style.backgroundColor = "white"
+                        document.getElementById("cin7").style.border = "0px solid gray";
+                        document.getElementById("xero").style.backgroundColor = "white"
+                        document.getElementById("xero").style.border = "0px solid gray"
+                    }
+                    })
         </script>
     </body>
 </html>
